@@ -1,68 +1,41 @@
 import Template from 'components/templates/default';
 import React, { useState } from 'react';
-import Image from 'next/image';
-import { Section, Box, Container, Columns } from 'react-bulma-components';
-import styled from 'styled-components';
-
-const availableColors = [
-  'brown',
-  'red',
-  'orange',
-  'yellow',
-  'lime',
-  'green',
-  'cyan',
-  'blue',
-  'purple',
-  'pink',
-  'white',
-  'black',
-];
+import { useRouter } from 'next/router';
+import { Button, Box, Section, Container, Columns } from 'react-bulma-components';
+import { IsUsed, availableColors } from 'models/color';
+import UserSelect from 'components/UserSelect';
 
 const IndexPage: React.FC = () => {
+  const router = useRouter();
   const initialColors = availableColors.reduce((o, key) => Object.assign(o, { [key]: true }), {});
-  const [selectedColors, setSelectedColors] = useState(initialColors);
+  const [flags, setFlags] = useState(initialColors as IsUsed);
 
-  const selectColor = (color: string) => {
-    setSelectedColors({
-      ...selectedColors,
-      [color]: !selectedColors[color],
-    });
+  const handleStart = () => {
+    console.log(flags);
+    // router.push('/note');
   };
 
   return (
     <Template>
       <Section>
         <Container>
-          <Box>
-            <Columns className="is-mobile">
-              {Object.entries(selectedColors).map(([color, used]) => (
-                <Columns.Column
-                  key={color}
-                  size={4}
-                  kind="child"
-                  onClick={() => selectColor(color)}
-                >
-                  <PlayerIcon
-                    src={`/icon/${color}.png`}
-                    alt={color}
-                    width={440}
-                    height={482}
-                    used={used}
-                  />
-                </Columns.Column>
-              ))}
-            </Columns>
-          </Box>
+          <Columns>
+            <Columns.Column className="is-tablet">
+              <Box>
+                <UserSelect flags={flags} setFlags={setFlags} />
+              </Box>
+              <Button color="info" className="is-fullwidth is-medium" onClick={() => handleStart()}>
+                Start
+              </Button>
+            </Columns.Column>
+            <Columns.Column>
+              <h1>使い方とか書く</h1>
+            </Columns.Column>
+          </Columns>
         </Container>
       </Section>
-      <span>{JSON.stringify(selectedColors)}</span>
     </Template>
   );
 };
-
-const PlayerIcon = styled(Image)`
-  opacity: ${(props) => (props.used ? 1 : 0.4)};
-`;
 
 export default IndexPage;

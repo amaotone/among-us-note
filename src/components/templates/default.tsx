@@ -30,9 +30,9 @@ const Layout: React.FC<Props> = (props: Props) => {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
         />
       </Head>
-      <Navbar color="primary">
+      <Navbar color="light">
         <Navbar.Brand>
-          <Navbar.Item>Among Us Note</Navbar.Item>
+          <Navbar.Item>Among Us Note / あもあすのーと</Navbar.Item>
         </Navbar.Brand>
       </Navbar>
       <main>
