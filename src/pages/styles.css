@@ -1,19 +1,32 @@
 @import 'react-bulma-components/dist/react-bulma-components.min.css';
 
-.dropdown-trigger .button .icon {
-  display: none !important;
+.dropdown {
+  width: 100%;
+}
+
+.dropdown-trigger {
+  width: 100%;
 }
 
 .dropdown-trigger .button {
+  display: flex;
+  text-align: center;
+  width: 100%;
   border: none;
   font-size: 1.2em;
-  height: 2.4em;
-  width: 2em;
   line-height: 1;
   padding: 0;
   background: none;
   border: none;
-  vertical-align: middle;
+}
+
+.dropdown-trigger .button .icon {
+  display: none !important;
+}
+
+.table td,
+.table th {
+  height: 2.4em;
 }
 
 .table td {

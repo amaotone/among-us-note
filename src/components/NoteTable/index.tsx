@@ -46,9 +46,7 @@ const NoteTable: React.FC<Props> = (props: Props) => {
   const isAlive = (player: Player) =>
     player.states.filter((s) => s === 'killed' || s === 'ejected').length === 0;
 
-  const playerCount = players.filter((s) => s.isUsed).length;
   const stateCount = players[0].states.length;
-  const isUp = (playerIndex) => playerIndex >= playerCount / 2;
   const isRight = (stateIndex) => stateIndex >= stateCount / 2;
 
   return (
@@ -73,7 +71,7 @@ const NoteTable: React.FC<Props> = (props: Props) => {
         <tbody>
           {players
             .filter((player) => player.isUsed)
-            .map((player, playerIndex) => (
+            .map((player) => (
               <PlayerRow key={player.color} player={player} isAlive={isAlive(player)}>
                 <th
                   style={{ position: 'relative' }}
@@ -86,7 +84,6 @@ const NoteTable: React.FC<Props> = (props: Props) => {
                   <PlayerCell key={nanoid()} state={state} className="has-text-centered">
                     <Dropdown
                       label={emojiMapping[state]}
-                      up={isUp(playerIndex)}
                       right={isRight(stateIndex)}
                       onChange={(selected) => changePlayerState(player.color, stateIndex, selected)}
                       className="has-text-left"
