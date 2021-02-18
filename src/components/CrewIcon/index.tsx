@@ -9,16 +9,11 @@ interface Props {
 
 const CrewIcon: React.FC<Props> = (props: Props) => {
   const { color, fill } = props;
-  const params = fill
-    ? {
-        layout: 'fill',
-        objectFit: 'contain',
-      }
-    : {
-        width: 420,
-        height: 420,
-      };
-  return <Image src={`/icon/${color}.png`} alt={color} {...params} />;
+  return fill ? (
+    <Image src={`/icon/${color}.png`} alt={color} layout="fill" objectFit="contain" />
+  ) : (
+    <Image src={`/icon/${color}.png`} alt={color} width={420} height={420} />
+  );
 };
 
 export default CrewIcon;
