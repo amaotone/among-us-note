@@ -14,6 +14,22 @@ library.add(fab, fas, far);
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>
+    <DefaultSeo
+      title="Among Us Note"
+      description="Among Usのゲーム中に簡単にメモを取ろう！"
+      canonical="https://amongus.amalog.net"
+      openGraph={{
+        url: 'https://amongus.amalog.net',
+        title: 'Among Us Note',
+        description: 'Among Usのゲーム中に簡単にメモを取ろう！',
+        images: [{ url: 'https://amongus.amalog.net/ogp.png', width: 1200, height: 630 }],
+        site_name: 'Among Us Note',
+      }}
+      twitter={{
+        handle: '@SakuEji',
+        cardType: 'summary_large_image',
+      }}
+    />
     <Head>
       <title>Among Us Note</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -24,22 +40,7 @@ const App = ({ Component, pageProps }: AppProps) => (
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
       />
     </Head>
-    <DefaultSeo
-      title="Among Us Note"
-      description="Among Usのゲーム中に簡単にメモを取ろう！"
-      canonical="https://amongus.amalog.net"
-      openGraph={{
-        url: 'https://amongus.amalog.net',
-        title: 'Among Us Note',
-        description: 'Among Usのゲーム中に簡単にメモを取ろう！',
-        images: [{ url: 'https://amoungus.amalog.net/ogp.png', width: 1200, height: 630 }],
-        site_name: 'Among Us Note',
-      }}
-      twitter={{
-        handle: '@SakuEji',
-        cardType: 'summary_large_image',
-      }}
-    />
+
     <Navbar color="light">
       <Navbar.Brand>
         <Navbar.Item>Among Us Note</Navbar.Item>
