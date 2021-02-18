@@ -4,8 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Navbar } from 'react-bulma-components';
+import { Navbar, Footer, Container } from 'react-bulma-components';
 
 library.add(fab, fas, far);
 
@@ -32,12 +31,19 @@ const Layout: React.FC<Props> = (props: Props) => {
       </Head>
       <Navbar color="light">
         <Navbar.Brand>
-          <Navbar.Item>Among Us Note / あもあすのーと</Navbar.Item>
+          <Navbar.Item>Among Us Note</Navbar.Item>
         </Navbar.Brand>
       </Navbar>
       <main>
         <div>{children}</div>
       </main>
+      <Footer>
+        <Container style={{ textAlign: 'center' }}>
+          <p>
+            <strong>Among Us Note</strong> by <a href="https://twitter.com/SakuEji">Amane Suzuki</a>
+          </p>
+        </Container>
+      </Footer>
     </div>
   );
 };

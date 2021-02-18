@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { Table, Dropdown } from 'react-bulma-components';
+import { Dropdown } from 'react-bulma-components';
 import { Player, playerStates, emojiMapping } from 'models/state';
 import CrewIcon from 'components/CrewIcon';
 import { nanoid } from 'nanoid';
@@ -13,13 +13,17 @@ const NoteTable: React.FC<Props> = (props: Props) => {
   const { players, setPlayers } = props;
   const changePlayerState = (playerIndex, stateIndex, state) => {
     const data = players.slice();
+    switch (state) {
+      default:
+        data[playerIndex].states[stateIndex] = state;
+    }
     data[playerIndex].states[stateIndex] = state;
     setPlayers(data);
   };
   return (
     <>
-      <div className="table-container" style={{ overflowY: 'visible', paddingBottom: '300px' }}>
-        <Table>
+      <div className="table-container" style={{ overflowY: 'visible', paddingBottom: '200px' }}>
+        <table className="table is-bordered">
           <thead>
             <tr>
               <th>&nbsp;</th>
@@ -31,13 +35,13 @@ const NoteTable: React.FC<Props> = (props: Props) => {
           <tbody>
             {players.map((player, playerIndex) => (
               <tr key={player.color}>
-                <td style={{ position: 'relative' }}>
+                <td style={{ position: 'relative' }} className="crew-icon">
                   <CrewIcon color={player.color} />
                 </td>
                 {player.states.map((state, stateIndex) => (
                   <td key={`${player.color}_${nanoid()}`}>
                     <Dropdown
-                      value={state}
+                      label={emojiMapping[state]}
                       onChange={(selected) => changePlayerState(playerIndex, stateIndex, selected)}
                     >
                       {playerStates.map((s) => (
@@ -51,7 +55,7 @@ const NoteTable: React.FC<Props> = (props: Props) => {
               </tr>
             ))}
           </tbody>
-        </Table>
+        </table>
       </div>
     </>
   );

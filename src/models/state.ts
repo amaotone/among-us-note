@@ -25,7 +25,7 @@ export interface Player {
 }
 
 export const emojiMapping = {
-  neutral: '',
+  neutral: '◻️',
   suspicious: '😡',
   innocent: '😊',
   killed: '☠️',

@@ -1,0 +1,22 @@
+.dropdown-trigger .button .icon {
+  display: none !important;
+}
+
+.dropdown-trigger .button {
+  border: none;
+  font-size: 1.2em;
+  padding: 8px 10px;
+}
+
+.table td {
+  text-align: center;
+  padding: 0;
+}
+
+.table td.crew-icon {
+  padding: 25px !important;
+}
+
+.table th {
+  text-align: center !important;
+}

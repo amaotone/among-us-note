@@ -22,8 +22,7 @@
     "react-bulma-components": "^3.4.0",
     "react-dom": "^16.11.0",
     "react-scripts": "^4.0.2",
-    "styled-components": "^5.2.1",
-    "tailwindcss": "^2.0.3"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@types/eslint": "^7.2.6",
