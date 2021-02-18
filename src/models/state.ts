@@ -29,5 +29,5 @@ export const emojiMapping = {
   suspicious: '😡',
   innocent: '😊',
   killed: '☠️',
-  ejected: '👎',
+  ejected: '👋',
 };

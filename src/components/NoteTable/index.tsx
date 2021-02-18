@@ -24,16 +24,24 @@ const NoteTable: React.FC<Props> = (props: Props) => {
 
   const isAlive = (player: Player) =>
     player.states.filter((s) => s === 'killed' || s === 'ejected').length === 0;
+
+  const playerCount = players.filter((s) => s.isUsed).length;
+  const stateCount = players[0].states.length;
+  const isUp = (playerIndex) => playerIndex >= playerCount / 2;
+  const isRight = (stateIndex) => stateIndex >= stateCount / 2;
+
   return (
     <>
-      <div className="table-container" style={{ overflowY: 'visible', paddingBottom: '200px' }}>
+      <div className="table-container">
         <table className="table is-bordered">
           <thead>
             <tr>
               <th>&nbsp;</th>
-              {players[0].states.map((_, index) => (
-                <th>{index + 1}</th>
-              ))}
+              {Array(stateCount)
+                .fill(null)
+                .map((_, index) => (
+                  <th key={nanoid()}>{index + 1}</th>
+                ))}
             </tr>
           </thead>
           <tbody>
@@ -46,13 +54,21 @@ const NoteTable: React.FC<Props> = (props: Props) => {
                   <PlayerCell key={nanoid()} state={state}>
                     <Dropdown
                       label={emojiMapping[state]}
+                      up={isUp(playerIndex)}
+                      right={isRight(stateIndex)}
                       onChange={(selected) => changePlayerState(playerIndex, stateIndex, selected)}
                     >
-                      {playerStates.map((s) => (
-                        <Dropdown.Item value={s}>
-                          {emojiMapping[s]} {s}
-                        </Dropdown.Item>
-                      ))}
+                      <Dropdown.Item value="innocent">
+                        {emojiMapping.innocent} innocent
+                      </Dropdown.Item>
+                      <Dropdown.Item value="suspicious">
+                        {emojiMapping.suspicious} suspicious
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item value="killed">{emojiMapping.killed} killed</Dropdown.Item>
+                      <Dropdown.Item value="ejected">{emojiMapping.ejected} ejected</Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item value="neutral">{emojiMapping.neutral} reset</Dropdown.Item>
                     </Dropdown>
                   </PlayerCell>
                 ))}
