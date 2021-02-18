@@ -37,7 +37,7 @@ const App = ({ Component, pageProps }: AppProps) => (
       }}
       twitter={{
         handle: '@SakuEji',
-        cardType: 'summary_card_large',
+        cardType: 'summary_large_image',
       }}
     />
     <Navbar color="light">
