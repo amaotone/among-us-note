@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Section, Container, Button, Columns } from 'react-bulma-components';
+import { Section, Container } from 'react-bulma-components';
 import NoteTable from 'components/NoteTable';
 import PlayerTray from 'components/PlayerTray';
 import { availableColors, Player } from 'models/state';

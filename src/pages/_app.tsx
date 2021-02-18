@@ -8,7 +8,6 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { Navbar, Footer, Container } from 'react-bulma-components';
 import './styles.css';
-import 'react-bulma-components/dist/react-bulma-components.min.css';
 
 library.add(fab, fas, far);
 
