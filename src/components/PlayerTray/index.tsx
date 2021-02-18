@@ -8,12 +8,19 @@ import styled from 'styled-components';
 interface Props {
   players: Player[];
   setPlayers: Dispatch<SetStateAction<Player[]>>;
+  locked: boolean;
+  setLocked: Dispatch<SetStateAction<boolean>>;
 }
 
 const PlayerTray: React.FC<Props> = (props: Props) => {
-  const { players, setPlayers } = props;
+  const { players, setPlayers, locked, setLocked } = props;
+
+  const toggleLock = () => {
+    setLocked(!locked);
+  };
 
   const enable = (color) => {
+    if (locked) return;
     const data = players.map((p) => {
       if (p.color === color) {
         return { ...p, isUsed: true };
@@ -43,6 +50,11 @@ const PlayerTray: React.FC<Props> = (props: Props) => {
               </IconWrapper>
             ))}
         </div>
+        <p className="control">
+          <Button color="light" onClick={() => toggleLock()}>
+            {locked ? 'Locked' : 'Lock'}
+          </Button>
+        </p>
         <p className="control">
           <Button color="light" onClick={() => resetStates()}>
             Reset

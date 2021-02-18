@@ -4,14 +4,17 @@ import { Player, emojiMapping, Color } from 'models/state';
 import CrewIcon from 'components/CrewIcon';
 import { nanoid } from 'nanoid';
 import styled, { css } from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Props {
   players: Player[];
   setPlayers: Dispatch<SetStateAction<Player[]>>;
+  locked: boolean;
+  setLocked: Dispatch<SetStateAction<boolean>>;
 }
 
 const NoteTable: React.FC<Props> = (props: Props) => {
-  const { players, setPlayers } = props;
+  const { players, setPlayers, locked, setLocked } = props;
 
   const changePlayerState = (color, stateIndex, state) => {
     const data = players.map((p) => {
@@ -25,7 +28,12 @@ const NoteTable: React.FC<Props> = (props: Props) => {
     setPlayers(data);
   };
 
+  const toggleLock = () => {
+    setLocked(!locked);
+  };
+
   const disable = (color: Color) => {
+    if (locked) return;
     const data = players.map((p) => {
       if (p.color === color) {
         return { ...p, isUsed: false };
@@ -49,7 +57,13 @@ const NoteTable: React.FC<Props> = (props: Props) => {
         <table className="table is-bordered is-fullwidth">
           <thead>
             <tr>
-              <th>&nbsp;</th>
+              <th>
+                <FontAwesomeIcon
+                  icon={locked ? 'lock' : 'lock-open'}
+                  onClick={() => toggleLock()}
+                  fixedWidth
+                />
+              </th>
               {Array(stateCount)
                 .fill(null)
                 .map((_, index) => (

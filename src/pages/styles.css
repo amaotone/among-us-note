@@ -21,10 +21,9 @@
   padding: 0 !important;
 }
 
-.table .crew-icon {
-  padding: 1.2em !important;
-}
-
-.table th {
+.table thead th {
+  width: 2em !important;
+  line-height: 2em;
+  font-size: 1em;
   text-align: center !important;
 }

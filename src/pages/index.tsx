@@ -11,12 +11,23 @@ const IndexPage: React.FC = () => {
     states: new Array(7).fill('neutral'),
   }));
   const [players, setPlayers] = useState(initialPlayers);
+  const [locked, setLocked] = useState(false);
 
   return (
     <Section>
       <Container>
-        <NoteTable players={players} setPlayers={setPlayers} />
-        <PlayerTray players={players} setPlayers={setPlayers} />
+        <NoteTable
+          players={players}
+          setPlayers={setPlayers}
+          locked={locked}
+          setLocked={setLocked}
+        />
+        <PlayerTray
+          players={players}
+          setPlayers={setPlayers}
+          locked={locked}
+          setLocked={setLocked}
+        />
       </Container>
     </Section>
   );
