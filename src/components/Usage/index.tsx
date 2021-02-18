@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heading, Content } from 'react-bulma-components';
+import ShareOnTwitter from 'components/ShareOnTwitter';
 
 const UsagePanel: React.FC = () => (
   <>
@@ -17,6 +18,7 @@ const UsagePanel: React.FC = () => (
         <li>右下のリセットボタンを押すとメモをリセットします</li>
       </ol>
       <p>みんなでたのしくAmong Us！</p>
+      <ShareOnTwitter />
     </Content>
   </>
 );

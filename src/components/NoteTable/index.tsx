@@ -4,7 +4,6 @@ import { Player, emojiMapping, Color } from 'models/state';
 import CrewIcon from 'components/CrewIcon';
 import { nanoid } from 'nanoid';
 import styled, { css } from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Props {
   players: Player[];
@@ -55,7 +54,7 @@ const NoteTable: React.FC<Props> = (props: Props) => {
         <thead>
           <tr>
             <th onClick={() => toggleLock()}>
-              <FontAwesomeIcon icon={locked ? 'lock' : 'lock-open'} fixedWidth />
+              <i className={`fa ${locked ? 'fa-lock' : 'fa-lock-open'} fa-fw`} />
             </th>
             {Array(stateCount)
               .fill(null)
