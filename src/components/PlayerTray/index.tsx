@@ -15,10 +15,6 @@ interface Props {
 const PlayerTray: React.FC<Props> = (props: Props) => {
   const { players, setPlayers, locked, setLocked } = props;
 
-  const toggleLock = () => {
-    setLocked(!locked);
-  };
-
   const enable = (color) => {
     if (locked) return;
     const data = players.map((p) => {
@@ -51,13 +47,8 @@ const PlayerTray: React.FC<Props> = (props: Props) => {
             ))}
         </div>
         <p className="control">
-          <Button color="light" onClick={() => toggleLock()}>
-            {locked ? 'Locked' : 'Lock'}
-          </Button>
-        </p>
-        <p className="control">
           <Button color="light" onClick={() => resetStates()}>
-            Reset
+            リセット
           </Button>
         </p>
       </div>

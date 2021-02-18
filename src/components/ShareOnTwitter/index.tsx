@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from 'react-bulma-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ShareOnTwitter: React.FC = () => {
   const url = 'https://amongus.amalog.net';
@@ -14,8 +13,10 @@ const ShareOnTwitter: React.FC = () => {
         outlined
         href={`https://twitter.com/intent/tweet?url=${url}&text=${message}`}
       >
-        <i className="fab fa-twitter fa-fw" />
-        Share on Twitter
+        <span className="icon">
+          <i className="fab fa-twitter fa-fw" />
+        </span>
+        <span>Twitterでシェア</span>
       </Button>
     </>
   );

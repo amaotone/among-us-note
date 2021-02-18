@@ -84,16 +84,16 @@ const NoteTable: React.FC<Props> = (props: Props) => {
                       className="has-text-left"
                     >
                       <Dropdown.Item value="innocent">
-                        {emojiMapping.innocent} innocent
+                        {emojiMapping.innocent} 信用できる
                       </Dropdown.Item>
                       <Dropdown.Item value="suspicious">
-                        {emojiMapping.suspicious} suspicious
+                        {emojiMapping.suspicious} 怪しい
                       </Dropdown.Item>
                       <Dropdown.Divider />
-                      <Dropdown.Item value="killed">{emojiMapping.killed} killed</Dropdown.Item>
-                      <Dropdown.Item value="ejected">{emojiMapping.ejected} ejected</Dropdown.Item>
+                      <Dropdown.Item value="killed">{emojiMapping.killed} 殺害</Dropdown.Item>
+                      <Dropdown.Item value="ejected">{emojiMapping.ejected} 追放</Dropdown.Item>
                       <Dropdown.Divider />
-                      <Dropdown.Item value="neutral">{emojiMapping.neutral} reset</Dropdown.Item>
+                      <Dropdown.Item value="neutral">{emojiMapping.neutral} 消す</Dropdown.Item>
                     </Dropdown>
                   </PlayerCell>
                 ))}
