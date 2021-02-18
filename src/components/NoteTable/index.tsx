@@ -54,12 +54,8 @@ const NoteTable: React.FC<Props> = (props: Props) => {
       <table className="table is-bordered is-fullwidth">
         <thead>
           <tr>
-            <th>
-              <FontAwesomeIcon
-                icon={locked ? 'lock' : 'lock-open'}
-                onClick={() => toggleLock()}
-                fixedWidth
-              />
+            <th onClick={() => toggleLock()}>
+              <FontAwesomeIcon icon={locked ? 'lock' : 'lock-open'} fixedWidth />
             </th>
             {Array(stateCount)
               .fill(null)
