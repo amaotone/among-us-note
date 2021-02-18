@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Section, Container } from 'react-bulma-components';
+import { Section, Container, Button, Columns } from 'react-bulma-components';
 import NoteTable from 'components/NoteTable';
+import PlayerTray from 'components/PlayerTray';
 import { availableColors, Player } from 'models/state';
 
 const IndexPage: React.FC = () => {
@@ -15,6 +16,7 @@ const IndexPage: React.FC = () => {
     <Section>
       <Container>
         <NoteTable players={players} setPlayers={setPlayers} />
+        <PlayerTray players={players} setPlayers={setPlayers} />
       </Container>
     </Section>
   );

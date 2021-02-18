@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { Dropdown } from 'react-bulma-components';
-import { Player, playerStates, emojiMapping } from 'models/state';
+import { Player, playerStates, emojiMapping, Color } from 'models/state';
 import CrewIcon from 'components/CrewIcon';
 import { nanoid } from 'nanoid';
 import styled, { css } from 'styled-components';
@@ -12,13 +12,26 @@ interface Props {
 
 const NoteTable: React.FC<Props> = (props: Props) => {
   const { players, setPlayers } = props;
-  const changePlayerState = (playerIndex, stateIndex, state) => {
-    const data = players.slice();
-    switch (state) {
-      default:
-        data[playerIndex].states[stateIndex] = state;
-    }
-    data[playerIndex].states[stateIndex] = state;
+
+  const changePlayerState = (color, stateIndex, state) => {
+    const data = players.map((p) => {
+      if (p.color === color) {
+        const states = p.states.slice();
+        states[stateIndex] = state;
+        return { ...p, states };
+      }
+      return p;
+    });
+    setPlayers(data);
+  };
+
+  const disable = (color: Color) => {
+    const data = players.map((p) => {
+      if (p.color === color) {
+        return { ...p, isUsed: false };
+      }
+      return p;
+    });
     setPlayers(data);
   };
 
@@ -33,7 +46,7 @@ const NoteTable: React.FC<Props> = (props: Props) => {
   return (
     <>
       <div className="table-container">
-        <table className="table is-bordered">
+        <table className="table is-bordered is-fullwidth">
           <thead>
             <tr>
               <th>&nbsp;</th>
@@ -45,35 +58,46 @@ const NoteTable: React.FC<Props> = (props: Props) => {
             </tr>
           </thead>
           <tbody>
-            {players.map((player, playerIndex) => (
-              <PlayerRow key={player.color} player={player} isAlive={isAlive(player)}>
-                <th style={{ position: 'relative' }} className="crew-icon">
-                  <CrewIcon color={player.color} />
-                </th>
-                {player.states.map((state, stateIndex) => (
-                  <PlayerCell key={nanoid()} state={state}>
-                    <Dropdown
-                      label={emojiMapping[state]}
-                      up={isUp(playerIndex)}
-                      right={isRight(stateIndex)}
-                      onChange={(selected) => changePlayerState(playerIndex, stateIndex, selected)}
-                    >
-                      <Dropdown.Item value="innocent">
-                        {emojiMapping.innocent} innocent
-                      </Dropdown.Item>
-                      <Dropdown.Item value="suspicious">
-                        {emojiMapping.suspicious} suspicious
-                      </Dropdown.Item>
-                      <Dropdown.Divider />
-                      <Dropdown.Item value="killed">{emojiMapping.killed} killed</Dropdown.Item>
-                      <Dropdown.Item value="ejected">{emojiMapping.ejected} ejected</Dropdown.Item>
-                      <Dropdown.Divider />
-                      <Dropdown.Item value="neutral">{emojiMapping.neutral} reset</Dropdown.Item>
-                    </Dropdown>
-                  </PlayerCell>
-                ))}
-              </PlayerRow>
-            ))}
+            {players
+              .filter((player) => player.isUsed)
+              .map((player, playerIndex) => (
+                <PlayerRow key={player.color} player={player} isAlive={isAlive(player)}>
+                  <th
+                    style={{ position: 'relative' }}
+                    className="crew-icon"
+                    onClick={() => disable(player.color)}
+                  >
+                    <CrewIcon color={player.color} fill />
+                  </th>
+                  {player.states.map((state, stateIndex) => (
+                    <PlayerCell key={nanoid()} state={state} className="has-text-centered">
+                      <Dropdown
+                        label={emojiMapping[state]}
+                        up={isUp(playerIndex)}
+                        right={isRight(stateIndex)}
+                        onChange={(selected) =>
+                          changePlayerState(player.color, stateIndex, selected)
+                        }
+                        className="has-text-left"
+                      >
+                        <Dropdown.Item value="innocent">
+                          {emojiMapping.innocent} innocent
+                        </Dropdown.Item>
+                        <Dropdown.Item value="suspicious">
+                          {emojiMapping.suspicious} suspicious
+                        </Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item value="killed">{emojiMapping.killed} killed</Dropdown.Item>
+                        <Dropdown.Item value="ejected">
+                          {emojiMapping.ejected} ejected
+                        </Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item value="neutral">{emojiMapping.neutral} reset</Dropdown.Item>
+                      </Dropdown>
+                    </PlayerCell>
+                  ))}
+                </PlayerRow>
+              ))}
           </tbody>
         </table>
       </div>
