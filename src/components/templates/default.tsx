@@ -34,16 +34,19 @@ const Layout: React.FC<Props> = (props: Props) => {
           <Navbar.Item>Among Us Note</Navbar.Item>
         </Navbar.Brand>
       </Navbar>
-      <main>
-        <div>{children}</div>
-      </main>
-      <Footer>
-        <Container style={{ textAlign: 'center' }}>
-          <p>
-            <strong>Among Us Note</strong> by <a href="https://twitter.com/SakuEji">Amane Suzuki</a>
-          </p>
-        </Container>
-      </Footer>
+      <div className="hero is-fullheight-with-navbar">
+        <main>
+          <div>{children}</div>
+        </main>
+        <Footer>
+          <Container style={{ textAlign: 'center' }}>
+            <p>
+              <strong>Among Us Note</strong> by{' '}
+              <a href="https://twitter.com/SakuEji">Amane Suzuki</a>
+            </p>
+          </Container>
+        </Footer>
+      </div>
     </div>
   );
 };

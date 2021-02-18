@@ -3,6 +3,7 @@ import { Dropdown } from 'react-bulma-components';
 import { Player, playerStates, emojiMapping } from 'models/state';
 import CrewIcon from 'components/CrewIcon';
 import { nanoid } from 'nanoid';
+import styled, { css } from 'styled-components';
 
 interface Props {
   players: Player[];
@@ -20,6 +21,9 @@ const NoteTable: React.FC<Props> = (props: Props) => {
     data[playerIndex].states[stateIndex] = state;
     setPlayers(data);
   };
+
+  const isAlive = (player: Player) =>
+    player.states.filter((s) => s === 'killed' || s === 'ejected').length === 0;
   return (
     <>
       <div className="table-container" style={{ overflowY: 'visible', paddingBottom: '200px' }}>
@@ -34,12 +38,12 @@ const NoteTable: React.FC<Props> = (props: Props) => {
           </thead>
           <tbody>
             {players.map((player, playerIndex) => (
-              <tr key={player.color}>
-                <td style={{ position: 'relative' }} className="crew-icon">
+              <PlayerRow key={player.color} player={player} isAlive={isAlive(player)}>
+                <th style={{ position: 'relative' }} className="crew-icon">
                   <CrewIcon color={player.color} />
-                </td>
+                </th>
                 {player.states.map((state, stateIndex) => (
-                  <td key={`${player.color}_${nanoid()}`}>
+                  <PlayerCell key={nanoid()} state={state}>
                     <Dropdown
                       label={emojiMapping[state]}
                       onChange={(selected) => changePlayerState(playerIndex, stateIndex, selected)}
@@ -50,9 +54,9 @@ const NoteTable: React.FC<Props> = (props: Props) => {
                         </Dropdown.Item>
                       ))}
                     </Dropdown>
-                  </td>
+                  </PlayerCell>
                 ))}
-              </tr>
+              </PlayerRow>
             ))}
           </tbody>
         </table>
@@ -60,5 +64,27 @@ const NoteTable: React.FC<Props> = (props: Props) => {
     </>
   );
 };
+
+const PlayerRow = styled.tr`
+  ${(props) =>
+    !props.isAlive &&
+    css`
+      background-color: gray;
+
+      span {
+        opacity: 0.5;
+      }
+    `};
+`;
+
+const PlayerCell = styled.td`
+  ${(props) =>
+    props.state === 'neutral' &&
+    css`
+      span {
+        opacity: 0;
+      }
+    `}
+`;
 
 export default NoteTable;

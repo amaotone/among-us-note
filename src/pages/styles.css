@@ -5,16 +5,23 @@
 .dropdown-trigger .button {
   border: none;
   font-size: 1.2em;
-  padding: 8px 10px;
+  height: 2.4em;
+  width: 2em;
+  line-height: 1;
+  padding: 0;
+  background: none;
+  border: none;
+  vertical-align: middle;
 }
 
 .table td {
   text-align: center;
+  vertical-align: middle;
   padding: 0;
 }
 
-.table td.crew-icon {
-  padding: 25px !important;
+.table .crew-icon {
+  padding: 1.2em !important;
 }
 
 .table th {
