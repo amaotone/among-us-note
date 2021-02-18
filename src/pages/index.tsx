@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Section, Container } from 'react-bulma-components';
+import { Section, Container, Columns } from 'react-bulma-components';
 import NoteTable from 'components/NoteTable';
 import PlayerTray from 'components/PlayerTray';
 import { availableColors, Player } from 'models/state';
+import UsagePanel from 'components/Usage';
 
 const IndexPage: React.FC = () => {
   const initialPlayers: Player[] = availableColors.map((c) => ({
@@ -16,18 +17,25 @@ const IndexPage: React.FC = () => {
   return (
     <Section>
       <Container>
-        <NoteTable
-          players={players}
-          setPlayers={setPlayers}
-          locked={locked}
-          setLocked={setLocked}
-        />
-        <PlayerTray
-          players={players}
-          setPlayers={setPlayers}
-          locked={locked}
-          setLocked={setLocked}
-        />
+        <Columns>
+          <Columns.Column>
+            <NoteTable
+              players={players}
+              setPlayers={setPlayers}
+              locked={locked}
+              setLocked={setLocked}
+            />
+            <PlayerTray
+              players={players}
+              setPlayers={setPlayers}
+              locked={locked}
+              setLocked={setLocked}
+            />
+          </Columns.Column>
+          <Columns.Column>
+            <UsagePanel />
+          </Columns.Column>
+        </Columns>
       </Container>
     </Section>
   );
