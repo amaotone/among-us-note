@@ -53,68 +53,62 @@ const NoteTable: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <div className="table-container">
-        <table className="table is-bordered is-fullwidth">
-          <thead>
-            <tr>
-              <th>
-                <FontAwesomeIcon
-                  icon={locked ? 'lock' : 'lock-open'}
-                  onClick={() => toggleLock()}
-                  fixedWidth
-                />
-              </th>
-              {Array(stateCount)
-                .fill(null)
-                .map((_, index) => (
-                  <th key={nanoid()}>{index + 1}</th>
-                ))}
-            </tr>
-          </thead>
-          <tbody>
-            {players
-              .filter((player) => player.isUsed)
-              .map((player, playerIndex) => (
-                <PlayerRow key={player.color} player={player} isAlive={isAlive(player)}>
-                  <th
-                    style={{ position: 'relative' }}
-                    className="crew-icon"
-                    onClick={() => disable(player.color)}
-                  >
-                    <CrewIcon color={player.color} fill />
-                  </th>
-                  {player.states.map((state, stateIndex) => (
-                    <PlayerCell key={nanoid()} state={state} className="has-text-centered">
-                      <Dropdown
-                        label={emojiMapping[state]}
-                        up={isUp(playerIndex)}
-                        right={isRight(stateIndex)}
-                        onChange={(selected) =>
-                          changePlayerState(player.color, stateIndex, selected)
-                        }
-                        className="has-text-left"
-                      >
-                        <Dropdown.Item value="innocent">
-                          {emojiMapping.innocent} innocent
-                        </Dropdown.Item>
-                        <Dropdown.Item value="suspicious">
-                          {emojiMapping.suspicious} suspicious
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item value="killed">{emojiMapping.killed} killed</Dropdown.Item>
-                        <Dropdown.Item value="ejected">
-                          {emojiMapping.ejected} ejected
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item value="neutral">{emojiMapping.neutral} reset</Dropdown.Item>
-                      </Dropdown>
-                    </PlayerCell>
-                  ))}
-                </PlayerRow>
+      <table className="table is-bordered is-fullwidth">
+        <thead>
+          <tr>
+            <th>
+              <FontAwesomeIcon
+                icon={locked ? 'lock' : 'lock-open'}
+                onClick={() => toggleLock()}
+                fixedWidth
+              />
+            </th>
+            {Array(stateCount)
+              .fill(null)
+              .map((_, index) => (
+                <th key={nanoid()}>{index + 1}</th>
               ))}
-          </tbody>
-        </table>
-      </div>
+          </tr>
+        </thead>
+        <tbody>
+          {players
+            .filter((player) => player.isUsed)
+            .map((player, playerIndex) => (
+              <PlayerRow key={player.color} player={player} isAlive={isAlive(player)}>
+                <th
+                  style={{ position: 'relative' }}
+                  className="crew-icon"
+                  onClick={() => disable(player.color)}
+                >
+                  <CrewIcon color={player.color} fill />
+                </th>
+                {player.states.map((state, stateIndex) => (
+                  <PlayerCell key={nanoid()} state={state} className="has-text-centered">
+                    <Dropdown
+                      label={emojiMapping[state]}
+                      up={isUp(playerIndex)}
+                      right={isRight(stateIndex)}
+                      onChange={(selected) => changePlayerState(player.color, stateIndex, selected)}
+                      className="has-text-left"
+                    >
+                      <Dropdown.Item value="innocent">
+                        {emojiMapping.innocent} innocent
+                      </Dropdown.Item>
+                      <Dropdown.Item value="suspicious">
+                        {emojiMapping.suspicious} suspicious
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item value="killed">{emojiMapping.killed} killed</Dropdown.Item>
+                      <Dropdown.Item value="ejected">{emojiMapping.ejected} ejected</Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item value="neutral">{emojiMapping.neutral} reset</Dropdown.Item>
+                    </Dropdown>
+                  </PlayerCell>
+                ))}
+              </PlayerRow>
+            ))}
+        </tbody>
+      </table>
     </>
   );
 };
