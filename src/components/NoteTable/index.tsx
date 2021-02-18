@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { Dropdown } from 'react-bulma-components';
-import { Player, playerStates, emojiMapping, Color } from 'models/state';
+import { Player, emojiMapping, Color } from 'models/state';
 import CrewIcon from 'components/CrewIcon';
 import { nanoid } from 'nanoid';
 import styled, { css } from 'styled-components';
