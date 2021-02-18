@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Heading, Content } from 'react-bulma-components';
+import { Heading, Content } from 'react-bulma-components';
 
 const UsagePanel: React.FC = () => (
   <>

@@ -18,6 +18,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "nanoid": "^3.1.20",
     "next": "^10.0.7",
+    "next-seo": "^4.19.0",
     "react": "^16.11.0",
     "react-bulma-components": "^3.4.0",
     "react-dom": "^16.11.0",
