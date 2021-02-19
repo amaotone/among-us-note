@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Section, Container, Columns } from 'react-bulma-components';
 import NoteTable from 'components/NoteTable';
 import PlayerTray from 'components/PlayerTray';
@@ -14,6 +14,18 @@ const IndexPage: React.FC = () => {
   }));
   const [players, setPlayers] = useState(initialPlayers);
   const [locked, setLocked] = useState(false);
+
+  // load previous notes from localStorage
+  useEffect(() => {
+    const storedPlayers = JSON.parse(localStorage.getItem('players'));
+    if (storedPlayers) {
+      setPlayers(storedPlayers);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('players', JSON.stringify(players));
+  }, [players]);
 
   return (
     <Section>

@@ -77,10 +77,6 @@ const App = ({ Component, pageProps }: AppProps) => (
           <p>
             Created by <a href="https://twitter.com/SakuEji">Amane Suzuki (@SakuEji)</a>
           </p>
-          <p>
-            機能要望やバグ報告は <a href="https://twitter.com/SakuEji">Twitter</a> か{' '}
-            <a href="https://peing.net/ja/sakueji">質問箱</a> まで！
-          </p>
         </Container>
       </Footer>
     </div>
