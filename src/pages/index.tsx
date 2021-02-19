@@ -21,7 +21,7 @@ const IndexPage: React.FC = () => {
         <Adsense.Google
           client="ca-pub-1424417569342773"
           slot="6258822796"
-          style={{ display: 'block' }}
+          style={{ display: 'block', marginButtom: '1.5rem' }}
           format="auto"
           responsive="true"
         />
