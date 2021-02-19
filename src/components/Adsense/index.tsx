@@ -1,9 +1,18 @@
 import React, { useEffect } from 'react';
 
+declare global {
+  // eslint-disable-next-line no-unused-vars
+  interface Window {
+    adsbygoogle: any;
+  }
+}
+
 const AdsenseCard: React.FC = () => {
   useEffect(() => {
-    if (window.adsbygoogle && process.env.NODE_ENV !== 'development') {
-      window.adsbygoogle.push({});
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (err) {
+      console.log(err);
     }
   }, []);
 
