@@ -1,6 +1,7 @@
 @import 'react-bulma-components/dist/react-bulma-components.min.css';
 @import '@fortawesome/fontawesome-free/css/all.css';
 
+/* note panel */
 .dropdown {
   width: 100%;
 }
@@ -35,10 +36,19 @@
   vertical-align: middle;
   padding: 0 !important;
 }
-
 .table thead th {
   width: 2em !important;
   line-height: 2em;
   font-size: 1em;
   text-align: center !important;
+}
+
+/* bottom sticky footer */
+.main {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.main .footer {
+  margin-top: auto;
 }
