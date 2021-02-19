@@ -42,17 +42,3 @@
   font-size: 1em;
   text-align: center !important;
 }
-
-/* bottom sticky footer */
-html,
-body,
-body > div:first-child,
-div#__next,
-div#__next > div {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-.main {
-  flex: 1;
-}
