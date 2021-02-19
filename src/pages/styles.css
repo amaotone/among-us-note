@@ -44,11 +44,15 @@
 }
 
 /* bottom sticky footer */
-.main {
+html,
+body,
+body > div:first-child,
+div#__next,
+div#__next > div {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
-.main .footer {
-  margin-top: auto;
+.main {
+  flex: 1;
 }

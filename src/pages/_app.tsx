@@ -58,14 +58,13 @@ const App = ({ Component, pageProps }: AppProps) => (
         }}
       />
     </Head>
-
-    <Navbar color="light">
-      <Navbar.Brand>
-        <Navbar.Item>Among Us Note</Navbar.Item>
-      </Navbar.Brand>
-    </Navbar>
-    <div className="hero is-fullheight-with-navbar main">
-      <main>
+    <div className="wrapper">
+      <Navbar color="light">
+        <Navbar.Brand>
+          <Navbar.Item>Among Us Note</Navbar.Item>
+        </Navbar.Brand>
+      </Navbar>
+      <main className="main">
         <div>
           <Component {...pageProps} />
         </div>
