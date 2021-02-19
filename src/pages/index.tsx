@@ -19,7 +19,7 @@ const IndexPage: React.FC = () => {
     <Section>
       <Container>
         <div className="is-hidden-tablet mb-5">
-          <AdsenseCard />
+          <AdsenseCard slot="6258822796" />
         </div>
         <Columns>
           <Columns.Column>
@@ -33,7 +33,7 @@ const IndexPage: React.FC = () => {
           </Columns.Column>
           <Columns.Column>
             <UsagePanel />
-            <AdsenseCard />
+            <AdsenseCard slot="5936578532" />
           </Columns.Column>
         </Columns>
       </Container>

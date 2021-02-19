@@ -7,7 +7,13 @@ declare global {
   }
 }
 
-const AdsenseCard: React.FC = () => {
+interface Props {
+  slot: string;
+}
+
+const AdsenseCard: React.FC<Props> = (props: Props) => {
+  const { slot } = props;
+
   useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -21,7 +27,7 @@ const AdsenseCard: React.FC = () => {
       className="adsbygoogle"
       style={{ display: 'block' }}
       data-ad-client="ca-pub-1424417569342773"
-      data-ad-slot="6258822796"
+      data-ad-slot={slot}
       data-ad-format="auto"
       data-full-width-responsive="true"
     />
