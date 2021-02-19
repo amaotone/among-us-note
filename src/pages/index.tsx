@@ -25,12 +25,7 @@ const IndexPage: React.FC = () => {
               locked={locked}
               setLocked={setLocked}
             />
-            <PlayerTray
-              players={players}
-              setPlayers={setPlayers}
-              locked={locked}
-              setLocked={setLocked}
-            />
+            <PlayerTray players={players} setPlayers={setPlayers} locked={locked} />
           </Columns.Column>
           <Columns.Column>
             <UsagePanel />

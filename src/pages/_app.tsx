@@ -1,6 +1,8 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import type { AppProps } from 'next/app';
+import Router from 'next/router';
 import Head from 'next/head';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -8,8 +10,10 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { DefaultSeo } from 'next-seo';
 import { Navbar, Footer, Container } from 'react-bulma-components';
+import * as gtag from 'utils/gtag';
 import './styles.css';
 
+Router.events.on('routeChangeComplete', (url) => gtag.pageview(url));
 library.add(fab, fas, far);
 
 const App = ({ Component, pageProps }: AppProps) => (
@@ -38,6 +42,19 @@ const App = ({ Component, pageProps }: AppProps) => (
         data-ad-client="ca-pub-1424417569342773"
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      />
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
       />
     </Head>
 

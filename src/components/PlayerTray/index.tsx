@@ -9,11 +9,10 @@ interface Props {
   players: Player[];
   setPlayers: Dispatch<SetStateAction<Player[]>>;
   locked: boolean;
-  setLocked: Dispatch<SetStateAction<boolean>>;
 }
 
 const PlayerTray: React.FC<Props> = (props: Props) => {
-  const { players, setPlayers, locked, setLocked } = props;
+  const { players, setPlayers, locked } = props;
 
   const enable = (color) => {
     if (locked) return;
