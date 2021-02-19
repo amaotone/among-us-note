@@ -90,8 +90,8 @@ const NoteTable: React.FC<Props> = (props: Props) => {
                         {emojiMapping.suspicious} 怪しい
                       </Dropdown.Item>
                       <Dropdown.Divider />
-                      <Dropdown.Item value="killed">{emojiMapping.killed} 殺害</Dropdown.Item>
-                      <Dropdown.Item value="ejected">{emojiMapping.ejected} 追放</Dropdown.Item>
+                      <Dropdown.Item value="killed">{emojiMapping.killed} 殺害された</Dropdown.Item>
+                      <Dropdown.Item value="ejected">{emojiMapping.ejected} 追放した</Dropdown.Item>
                       <Dropdown.Divider />
                       <Dropdown.Item value="neutral">{emojiMapping.neutral} 消す</Dropdown.Item>
                     </Dropdown>

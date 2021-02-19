@@ -73,7 +73,10 @@ const App = ({ Component, pageProps }: AppProps) => (
       <Footer>
         <Container style={{ textAlign: 'center' }}>
           <p>
-            <strong>Among Us Note</strong> by <a href="https://twitter.com/SakuEji">Amane Suzuki</a>
+            <strong>Among Us Note</strong>
+          </p>
+          <p>
+            Created by <a href="https://twitter.com/SakuEji">Amane Suzuki (@SakuEji)</a>
           </p>
         </Container>
       </Footer>
