@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rimraf .next/",
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint --fix ./src/**/*.{js,jsx,ts,tsx}",
     "format": "prettier \"./src/**/*.+(js|jsx|json|ts|tsx)\" --write"

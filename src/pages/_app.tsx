@@ -18,12 +18,9 @@ Router.events.on('routeChangeComplete', (url) => gtag.pageview(url));
 library.add(fab, fas, far);
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const mainRef = React.createRef();
-  const adsenseInjectorObserver = null;
-
   useEffect(() => {
-    const elem = document.getElementsByClassName('is-fullheight')[0];
-    const observer = new MutationObserver((mutations, observer) => {
+    const elem: any = document.getElementsByClassName('is-fullheight')[0];
+    const observer: any = new MutationObserver(() => {
       elem.style.removeProperty('min-height');
       elem.style.removeProperty('height');
     });
