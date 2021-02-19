@@ -4,7 +4,7 @@ import NoteTable from 'components/NoteTable';
 import PlayerTray from 'components/PlayerTray';
 import { availableColors, Player } from 'models/state';
 import UsagePanel from 'components/Usage';
-import Adsense from 'react-adsense';
+import AdsenseCard from 'components/Adsense';
 
 const IndexPage: React.FC = () => {
   const initialPlayers: Player[] = availableColors.map((c) => ({
@@ -18,14 +18,8 @@ const IndexPage: React.FC = () => {
   return (
     <Section>
       <Container>
-        <div className="is-hidden-tablet">
-          <Adsense.Google
-            client="ca-pub-1424417569342773"
-            slot="6258822796"
-            style={{ display: 'block', marginButtom: '1.5rem' }}
-            format="auto"
-            responsive="true"
-          />
+        <div className="is-hidden-tablet mb-5">
+          <AdsenseCard />
         </div>
         <Columns>
           <Columns.Column>
@@ -39,13 +33,7 @@ const IndexPage: React.FC = () => {
           </Columns.Column>
           <Columns.Column>
             <UsagePanel />
-            <Adsense.Google
-              client="ca-pub-1424417569342773"
-              slot="5936578532"
-              style={{ display: 'block' }}
-              format="auto"
-              responsive="true"
-            />
+            <AdsenseCard />
           </Columns.Column>
         </Columns>
       </Container>
