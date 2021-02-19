@@ -11,6 +11,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { DefaultSeo } from 'next-seo';
 import { Navbar, Footer, Container } from 'react-bulma-components';
 import * as gtag from 'utils/gtag';
+import { baseUrl } from 'models/constant';
 import './styles.css';
 
 Router.events.on('routeChangeComplete', (url) => gtag.pageview(url));
@@ -20,13 +21,13 @@ const App = ({ Component, pageProps }: AppProps) => (
   <>
     <DefaultSeo
       title="Among Us Note"
-      description="Among Usのゲーム中に簡単にメモを取ろう！"
-      canonical="https://amongus.amalog.net"
+      description="Among Usのメモを簡単に取ろう！"
+      canonical={baseUrl}
       openGraph={{
-        url: 'https://amongus.amalog.net',
+        url: baseUrl,
         title: 'Among Us Note',
-        description: 'Among Usのゲーム中に簡単にメモを取ろう！',
-        images: [{ url: 'https://amongus.amalog.net/ogp.png', width: 1200, height: 630 }],
+        description: 'Among Usのメモを簡単に取ろう！',
+        images: [{ url: `${baseUrl}/ogp.png`, width: 1200, height: 630 }],
         site_name: 'Among Us Note',
       }}
       twitter={{

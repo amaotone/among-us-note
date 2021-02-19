@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button } from 'react-bulma-components';
+import { baseUrl } from 'models/constant';
 
 const ShareOnTwitter: React.FC = () => {
-  const url = 'https://amongus.amalog.net';
-  const message = 'Among Usのメモを手軽に取って、楽しく遊びましょう！ %23AmongUsNote%0A';
+  const url = baseUrl;
+  const message =
+    '手軽に使えるAmong Usのメモです。怪しい人を見つけるのにも、自分の潔白をアピールするのにも使えます。 %23AmongUsNote';
 
   return (
     <>
