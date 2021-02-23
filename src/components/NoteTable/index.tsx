@@ -4,6 +4,7 @@ import { Player, emojiMapping, Color } from 'models/state';
 import CrewIcon from 'components/CrewIcon';
 import { nanoid } from 'nanoid';
 import styled, { css } from 'styled-components';
+import Twemoji from 'react-twemoji';
 
 interface Props {
   players: Player[];
@@ -50,57 +51,65 @@ const NoteTable: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <table className="table is-bordered is-fullwidth">
-        <thead>
-          <tr>
-            <th onClick={() => toggleLock()}>
-              <i className={`fa ${locked ? 'fa-lock' : 'fa-lock-open'} fa-fw`} />
-            </th>
-            {Array(stateCount)
-              .fill(null)
-              .map((_, index) => (
-                <th key={nanoid()}>{index + 1}</th>
-              ))}
-          </tr>
-        </thead>
-        <tbody>
-          {players
-            .filter((player) => player.isUsed)
-            .map((player) => (
-              <PlayerRow key={player.color} player={player} isAlive={isAlive(player)}>
-                <th
-                  style={{ position: 'relative' }}
-                  className="crew-icon"
-                  onClick={() => disable(player.color)}
-                >
-                  <CrewIcon color={player.color} fill />
-                </th>
-                {player.states.map((state, stateIndex) => (
-                  <PlayerCell key={nanoid()} state={state} className="has-text-centered">
-                    <Dropdown
-                      label={emojiMapping[state]}
-                      right={isRight(stateIndex)}
-                      onChange={(selected) => changePlayerState(player.color, stateIndex, selected)}
-                      className="has-text-left"
-                    >
-                      <Dropdown.Item value="innocent">
-                        {emojiMapping.innocent} 信用できる
-                      </Dropdown.Item>
-                      <Dropdown.Item value="suspicious">
-                        {emojiMapping.suspicious} 怪しい
-                      </Dropdown.Item>
-                      <Dropdown.Divider />
-                      <Dropdown.Item value="killed">{emojiMapping.killed} 殺害された</Dropdown.Item>
-                      <Dropdown.Item value="ejected">{emojiMapping.ejected} 追放した</Dropdown.Item>
-                      <Dropdown.Divider />
-                      <Dropdown.Item value="neutral">{emojiMapping.neutral} 消す</Dropdown.Item>
-                    </Dropdown>
-                  </PlayerCell>
+      <Twemoji>
+        <table className="table is-bordered is-fullwidth">
+          <thead>
+            <tr>
+              <th onClick={() => toggleLock()}>
+                <i className={`fa ${locked ? 'fa-lock' : 'fa-lock-open'} fa-fw`} />
+              </th>
+              {Array(stateCount)
+                .fill(null)
+                .map((_, index) => (
+                  <th key={nanoid()}>{index + 1}</th>
                 ))}
-              </PlayerRow>
-            ))}
-        </tbody>
-      </table>
+            </tr>
+          </thead>
+          <tbody>
+            {players
+              .filter((player) => player.isUsed)
+              .map((player) => (
+                <PlayerRow key={player.color} player={player} isAlive={isAlive(player)}>
+                  <th
+                    style={{ position: 'relative' }}
+                    className="crew-icon"
+                    onClick={() => disable(player.color)}
+                  >
+                    <CrewIcon color={player.color} fill />
+                  </th>
+                  {player.states.map((state, stateIndex) => (
+                    <PlayerCell key={nanoid()} state={state} className="has-text-centered">
+                      <Dropdown
+                        label={emojiMapping[state]}
+                        right={isRight(stateIndex)}
+                        onChange={(selected) =>
+                          changePlayerState(player.color, stateIndex, selected)
+                        }
+                        className="has-text-left"
+                      >
+                        <Dropdown.Item value="innocent">
+                          {emojiMapping.innocent} 信用できる
+                        </Dropdown.Item>
+                        <Dropdown.Item value="suspicious">
+                          {emojiMapping.suspicious} 怪しい
+                        </Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item value="killed">
+                          {emojiMapping.killed} 殺害された
+                        </Dropdown.Item>
+                        <Dropdown.Item value="ejected">
+                          {emojiMapping.ejected} 追放した
+                        </Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item value="neutral">{emojiMapping.neutral} 消す</Dropdown.Item>
+                      </Dropdown>
+                    </PlayerCell>
+                  ))}
+                </PlayerRow>
+              ))}
+          </tbody>
+        </table>
+      </Twemoji>
     </>
   );
 };
