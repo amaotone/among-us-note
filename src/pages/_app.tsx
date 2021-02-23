@@ -12,6 +12,7 @@ import { DefaultSeo } from 'next-seo';
 import { Navbar, Footer, Container, Hero } from 'react-bulma-components';
 import * as gtag from 'utils/gtag';
 import { baseUrl } from 'models/constant';
+import Twemoji from 'react-twemoji';
 import './styles.css';
 
 Router.events.on('routeChangeComplete', (url) => gtag.pageview(url));
@@ -79,11 +80,13 @@ const App = ({ Component, pageProps }: AppProps) => {
             </Navbar.Brand>
           </Navbar>
         </Hero.Head>
-        <main className="main">
-          <div>
-            <Component {...pageProps} />
-          </div>
-        </main>
+        <Twemoji>
+          <main className="main">
+            <div>
+              <Component {...pageProps} />
+            </div>
+          </main>
+        </Twemoji>
         <Hero.Footer>
           <Footer>
             <Container style={{ textAlign: 'center' }}>

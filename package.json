@@ -24,6 +24,7 @@
     "react-bulma-components": "^3.4.0",
     "react-dom": "^16.11.0",
     "react-scripts": "^4.0.2",
+    "react-twemoji": "^0.3.0",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
