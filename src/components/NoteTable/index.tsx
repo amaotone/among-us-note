@@ -81,7 +81,7 @@ const NoteTable: React.FC<Props> = (props: Props) => {
               <th>
                 <i className="fa fa-user fa-fw" />
               </th>
-              <th>
+              <th style={{ borderRightWidth: '3px' }}>
                 <i className="fa fa-bullhorn fa-fw" />
               </th>
               {Array(stateCount)
@@ -110,7 +110,7 @@ const NoteTable: React.FC<Props> = (props: Props) => {
                       onBlur={(e) => changeName(player.color, e)}
                     />
                   </td>
-                  <td className="has-text-centered">
+                  <td className="has-text-centered" style={{ borderRightWidth: '3px' }}>
                     <Button onClick={() => toggleButton(player.color)}>
                       {player.hasButton ? '' : '✅'}
                     </Button>
