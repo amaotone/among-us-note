@@ -19,6 +19,7 @@ export const playerStates = ['suspicious', 'innocent', 'killed', 'ejected', 'neu
 export type PlayerState = typeof playerStates[number];
 
 export interface Player {
+  name: string;
   color: Color;
   isUsed: boolean;
   hasButton: boolean;

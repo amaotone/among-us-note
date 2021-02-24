@@ -8,6 +8,7 @@ import AdsenseCard from 'components/Adsense';
 
 const IndexPage: React.FC = () => {
   const initialPlayers: Player[] = availableColors.map((c) => ({
+    name: '',
     color: c,
     isUsed: true,
     hasButton: true,

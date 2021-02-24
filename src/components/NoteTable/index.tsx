@@ -53,6 +53,16 @@ const NoteTable: React.FC<Props> = (props: Props) => {
     setPlayers(data);
   };
 
+  const changeName = (color: Color, event) => {
+    const data = players.map((p) => {
+      if (p.color === color) {
+        return { ...p, name: event.target.value };
+      }
+      return p;
+    });
+    setPlayers(data);
+  };
+
   const isAlive = (player: Player) =>
     player.states.filter((s) => s === 'killed' || s === 'ejected').length === 0;
 
@@ -67,6 +77,9 @@ const NoteTable: React.FC<Props> = (props: Props) => {
             <tr>
               <th onClick={() => toggleLock()}>
                 <i className={`fa ${locked ? 'fa-lock' : 'fa-lock-open'} fa-fw`} />
+              </th>
+              <th>
+                <i className="fa fa-user fa-fw" />
               </th>
               <th>
                 <i className="fa fa-bullhorn fa-fw" />
@@ -90,6 +103,13 @@ const NoteTable: React.FC<Props> = (props: Props) => {
                   >
                     <CrewIcon color={player.color} fill />
                   </th>
+                  <td className="has-text-centered username-cell">
+                    <input
+                      defaultValue={player.name}
+                      className="input username"
+                      onBlur={(e) => changeName(player.color, e)}
+                    />
+                  </td>
                   <td className="has-text-centered">
                     <Button onClick={() => toggleButton(player.color)}>
                       {player.hasButton ? '' : '✅'}
@@ -138,7 +158,8 @@ const PlayerRow = styled.tr`
     css`
       background-color: gray;
 
-      span {
+      span,
+      button {
         opacity: 0.5;
       }
     `};
