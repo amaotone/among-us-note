@@ -10,6 +10,7 @@
   width: 100%;
 }
 
+td .button,
 .dropdown-trigger .button {
   display: flex;
   text-align: center;

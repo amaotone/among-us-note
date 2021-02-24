@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { Dropdown } from 'react-bulma-components';
+import { Button, Dropdown } from 'react-bulma-components';
 import { Player, emojiMapping, Color } from 'models/state';
 import CrewIcon from 'components/CrewIcon';
 import { nanoid } from 'nanoid';
@@ -32,6 +32,16 @@ const NoteTable: React.FC<Props> = (props: Props) => {
     setLocked(!locked);
   };
 
+  const toggleButton = (color: Color) => {
+    const data = players.map((p) => {
+      if (p.color === color) {
+        return { ...p, hasButton: !p.hasButton };
+      }
+      return p;
+    });
+    setPlayers(data);
+  };
+
   const disable = (color: Color) => {
     if (locked) return;
     const data = players.map((p) => {
@@ -58,6 +68,9 @@ const NoteTable: React.FC<Props> = (props: Props) => {
               <th onClick={() => toggleLock()}>
                 <i className={`fa ${locked ? 'fa-lock' : 'fa-lock-open'} fa-fw`} />
               </th>
+              <th>
+                <i className="fa fa-bullhorn fa-fw" />
+              </th>
               {Array(stateCount)
                 .fill(null)
                 .map((_, index) => (
@@ -77,6 +90,11 @@ const NoteTable: React.FC<Props> = (props: Props) => {
                   >
                     <CrewIcon color={player.color} fill />
                   </th>
+                  <td className="has-text-centered">
+                    <Button onClick={() => toggleButton(player.color)}>
+                      {player.hasButton ? '' : '✅'}
+                    </Button>
+                  </td>
                   {player.states.map((state, stateIndex) => (
                     <PlayerCell key={nanoid()} state={state} className="has-text-centered">
                       <Dropdown
