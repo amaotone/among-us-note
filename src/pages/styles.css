@@ -63,7 +63,8 @@ img.emoji {
   border: none;
   text-align: center;
   vertical-align: middle;
-  font-size: 0.6em;
+  font-size: 0.7em;
+  font-weight: bold;
   overflow: hidden;
   text-overflow: clip;
   background: none;
