@@ -67,7 +67,7 @@ const NoteTable: React.FC<Props> = (props: Props) => {
     player.states.filter((s) => s === 'killed' || s === 'ejected').length === 0;
 
   const stateCount = players[0].states.length;
-  const isRight = (stateIndex) => stateIndex >= stateCount / 2;
+  const isRight = (stateIndex) => stateIndex >= (stateCount - 2) / 2;
 
   return (
     <>
@@ -123,23 +123,17 @@ const NoteTable: React.FC<Props> = (props: Props) => {
                         onChange={(selected) =>
                           changePlayerState(player.color, stateIndex, selected)
                         }
-                        className="has-text-left"
                       >
-                        <Dropdown.Item value="innocent">
-                          {emojiMapping.innocent} 信用できる
-                        </Dropdown.Item>
-                        <Dropdown.Item value="suspicious">
-                          {emojiMapping.suspicious} 怪しい
-                        </Dropdown.Item>
+                        <Dropdown.Item value="innocent">{emojiMapping.innocent}</Dropdown.Item>
+                        <Dropdown.Item value="suspicious">{emojiMapping.suspicious}</Dropdown.Item>
+                        <Dropdown.Item value="neutral">❎</Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item value="killed">
-                          {emojiMapping.killed} 殺害された
-                        </Dropdown.Item>
-                        <Dropdown.Item value="ejected">
-                          {emojiMapping.ejected} 追放した
-                        </Dropdown.Item>
+                        <Dropdown.Item value="killed">{emojiMapping.killed}</Dropdown.Item>
+                        <Dropdown.Item value="ejected">{emojiMapping.ejected}</Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item value="neutral">{emojiMapping.neutral} 消す</Dropdown.Item>
+                        <Dropdown.Item value="a">{emojiMapping.a}</Dropdown.Item>
+                        <Dropdown.Item value="b">{emojiMapping.b}</Dropdown.Item>
+                        <Dropdown.Item value="c">{emojiMapping.c}</Dropdown.Item>
                       </Dropdown>
                     </PlayerCell>
                   ))}
@@ -166,13 +160,31 @@ const PlayerRow = styled.tr`
 `;
 
 const PlayerCell = styled.td`
-  ${(props) =>
-    props.state === 'neutral' &&
-    css`
-      span {
-        opacity: 0;
-      }
-    `}
-`;
+  ${(props) => {
+    switch (props.state) {
+      case 'neutral':
+        return css`
+          span {
+            opacity: 0;
+          }
+        `;
+      case 'a':
+        return css`
+          background-color: hsla(141, 71%, 48%, 0.15);
+        `;
+      case 'b':
+        return css`
+          background-color: hsla(48, 100%, 67%, 0.15);
+        `;
 
+      case 'c':
+        return css`
+          background-color: hsla(348, 100%, 61%, 0.15);
+        `;
+
+      default:
+        return css``;
+    }
+  }}
+`;
 export default NoteTable;

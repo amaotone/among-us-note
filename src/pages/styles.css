@@ -70,3 +70,8 @@ img.emoji {
   box-shadow: none;
   height: 100%;
 }
+
+.dropdown-item {
+  display: inline-block;
+  font-size: 1.2em;
+}
