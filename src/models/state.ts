@@ -21,6 +21,7 @@ export type PlayerState = typeof playerStates[number];
 export interface Player {
   color: Color;
   isUsed: boolean;
+  hasButton: boolean;
   states: Array<PlayerState>;
 }
 
