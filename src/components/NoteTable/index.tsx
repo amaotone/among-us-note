@@ -150,11 +150,12 @@ const PlayerRow = styled.tr`
   ${(props) =>
     !props.isAlive &&
     css`
-      background-color: gray;
+      background-color: hsl(0, 0%, 70%);
 
       span,
-      button {
-        opacity: 0.5;
+      button,
+      img {
+        opacity: 0.8;
       }
     `};
 `;
@@ -168,6 +169,11 @@ const PlayerCell = styled.td`
             opacity: 0;
           }
         `;
+      case 'ejected':
+      case 'killed':
+        return css`
+          background-color: hsl(0, 0%, 50%);
+        `;
       case 'a':
         return css`
           background-color: hsla(141, 71%, 48%, 0.15);
@@ -176,12 +182,10 @@ const PlayerCell = styled.td`
         return css`
           background-color: hsla(48, 100%, 67%, 0.15);
         `;
-
       case 'c':
         return css`
           background-color: hsla(348, 100%, 61%, 0.15);
         `;
-
       default:
         return css``;
     }
