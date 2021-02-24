@@ -43,9 +43,9 @@ const IndexPage: React.FC = () => {
   return (
     <Section>
       <Container>
-        <div className="is-hidden-tablet mb-5">
+        {/* <div className="is-hidden-tablet mb-5">
           <AdsenseCard slot="6258822796" />
-        </div>
+        </div> */}
         <Columns>
           <Columns.Column>
             <NoteTable
