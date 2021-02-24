@@ -106,6 +106,7 @@ const NoteTable: React.FC<Props> = (props: Props) => {
                   <td className="has-text-centered username-cell">
                     <input
                       defaultValue={player.name}
+                      placeholder="name"
                       className="input username"
                       onBlur={(e) => changeName(player.color, e)}
                     />
