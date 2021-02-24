@@ -19,11 +19,13 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "nanoid": "^3.1.20",
     "next": "^10.0.7",
+    "next-build-id": "^3.0.0",
     "next-seo": "^4.19.0",
-    "react": "^16.11.0",
+    "react": "^16.14.0",
     "react-bulma-components": "^3.4.0",
     "react-dom": "^16.11.0",
     "react-scripts": "^4.0.2",
+    "react-twemoji": "^0.3.0",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {

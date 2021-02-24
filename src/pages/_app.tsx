@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import Router from 'next/router';
 import Head from 'next/head';
+import Link from 'next/link';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -29,7 +30,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       attributesFilter: ['style'],
     });
   }, []);
-
   return (
     <>
       <DefaultSeo
@@ -50,7 +50,10 @@ const App = ({ Component, pageProps }: AppProps) => {
       />
       <Head>
         <title>Among Us Note</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <script
           data-ad-client="ca-pub-1424417569342773"
@@ -75,7 +78,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <Hero.Head renderAs="header">
           <Navbar color="light">
             <Navbar.Brand>
-              <Navbar.Item>Among Us Note</Navbar.Item>
+              <Navbar.Item href="/">Among Us Note</Navbar.Item>
             </Navbar.Brand>
           </Navbar>
         </Hero.Head>
@@ -92,6 +95,10 @@ const App = ({ Component, pageProps }: AppProps) => {
               </p>
               <p>
                 Created by <a href="https://twitter.com/SakuEji">Amane Suzuki (@SakuEji)</a>
+              </p>
+              <p style={{ paddingTop: '20px' }}>
+                <Link href="/">ホーム</Link>｜<Link href="/changelog">リリース履歴</Link>｜
+                <Link href="https://github.com/amaotone/among-us-note">GitHub</Link>
               </p>
             </Container>
           </Footer>

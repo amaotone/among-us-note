@@ -9,20 +9,45 @@ const UsagePanel: React.FC = () => (
       <p>盤面を整理してインポスターを見つけましょう！</p>
       <ol>
         <li>使う色を選びます</li>
-        <ol type="a">
-          <li>表の中のアイコンをタップするとその色を外せます</li>
-          <li>表の下のアイコンをタップするとその色を戻せます</li>
-        </ol>
+        <li>必要であれば名前を記入します</li>
         <li>左上の鍵アイコンをタップすると使う色を固定できます</li>
         <li>セルをタップすると状況をメモできます</li>
-        <ol type="a">
-          <li>まずは殺害された人をメモしましょう</li>
-          <li>議論を進めながら分かったことを追記していきましょう</li>
-        </ol>
         <li>右下のリセットボタンを押すとメモがリセットされます</li>
       </ol>
       <p>みんなでたのしくAmong Us！</p>
+
       <ShareOnTwitter />
+
+      <table style={{ width: 'auto', marginTop: '2em' }}>
+        <thead>
+          <tr>
+            <td>記号</td>
+            <td>意味</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>😊</td>
+            <td>信じられる</td>
+          </tr>
+          <tr>
+            <td>😡</td>
+            <td>怪しい</td>
+          </tr>
+          <tr>
+            <td>☠️</td>
+            <td>死亡した</td>
+          </tr>
+          <tr>
+            <td>👋</td>
+            <td>追放した</td>
+          </tr>
+          <tr>
+            <td>A - D</td>
+            <td>ライン精査用（誰と誰がセット）</td>
+          </tr>
+        </tbody>
+      </table>
     </Content>
   </>
 );

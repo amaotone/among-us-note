@@ -28,7 +28,7 @@ const PlayerTray: React.FC<Props> = (props: Props) => {
   const resetStates = () => {
     const data = players.map((p) => {
       const states = p.states.slice().fill('neutral');
-      return { ...p, states };
+      return { ...p, states, hasButton: true };
     });
     setPlayers(data);
   };

@@ -2,6 +2,9 @@
 @import '@fortawesome/fontawesome-free/css/all.css';
 
 /* note panel */
+.table {
+  table-layout: fixed;
+}
 .dropdown {
   width: 100%;
 }
@@ -10,6 +13,7 @@
   width: 100%;
 }
 
+td .button,
 .dropdown-trigger .button {
   display: flex;
   text-align: center;
@@ -41,4 +45,34 @@
   line-height: 2em;
   font-size: 1em;
   text-align: center !important;
+}
+
+img {
+  pointer-events: none;
+}
+
+img.emoji {
+  height: 1em;
+  width: 1em;
+  margin: 0 0.05em 0 0.1em;
+  vertical-align: -0.1em;
+}
+
+.username {
+  padding: 0;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.7em;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: clip;
+  background: none;
+  box-shadow: none;
+  height: 100%;
+}
+
+.dropdown-item {
+  display: inline-block;
+  font-size: 1.2em;
 }

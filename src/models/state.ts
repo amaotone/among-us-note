@@ -15,12 +15,24 @@ export const availableColors = [
 
 export type Color = typeof availableColors[number];
 
-export const playerStates = ['suspicious', 'innocent', 'killed', 'ejected', 'neutral'] as const;
+export const playerStates = [
+  'suspicious',
+  'innocent',
+  'killed',
+  'ejected',
+  'neutral',
+  'a',
+  'b',
+  'c',
+  'd',
+] as const;
 export type PlayerState = typeof playerStates[number];
 
 export interface Player {
+  name: string;
   color: Color;
   isUsed: boolean;
+  hasButton: boolean;
   states: Array<PlayerState>;
 }
 
@@ -30,4 +42,8 @@ export const emojiMapping = {
   innocent: '😊',
   killed: '☠️',
   ejected: '👋',
+  a: 'A',
+  b: 'B',
+  c: 'C',
+  d: 'D',
 };
