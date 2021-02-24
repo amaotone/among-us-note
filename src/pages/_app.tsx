@@ -29,7 +29,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       attributesFilter: ['style'],
     });
   }, []);
-
   return (
     <>
       <DefaultSeo

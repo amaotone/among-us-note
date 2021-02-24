@@ -51,7 +51,7 @@ const NoteTable: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <Twemoji>
+      <Twemoji noWrapper>
         <table className="table is-bordered is-fullwidth">
           <thead>
             <tr>

@@ -10,16 +10,28 @@ const IndexPage: React.FC = () => {
   const initialPlayers: Player[] = availableColors.map((c) => ({
     color: c,
     isUsed: true,
-    states: new Array(7).fill('neutral'),
+    hasButton: true,
+    states: new Array(5).fill('neutral'),
   }));
   const [players, setPlayers] = useState(initialPlayers);
   const [locked, setLocked] = useState(false);
 
-  // load previous notes from localStorage
   useEffect(() => {
-    const storedPlayers = JSON.parse(localStorage.getItem('players'));
-    if (storedPlayers) {
-      setPlayers(storedPlayers);
+    if (process.env.NODE_ENV !== 'production') {
+      return;
+    }
+
+    // check build_id
+    const { buildId } = JSON.parse(document.querySelector('#__NEXT_DATA__').textContent);
+    const storedBuildId = localStorage.getItem('build_id');
+    if (buildId === storedBuildId) {
+      // load previous notes from localStorage
+      const storedPlayers = JSON.parse(localStorage.getItem('players'));
+      if (storedPlayers) {
+        setPlayers(storedPlayers);
+      }
+    } else {
+      localStorage.setItem('build_id', buildId);
     }
   }, []);
 
