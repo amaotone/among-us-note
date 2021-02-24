@@ -134,6 +134,7 @@ const NoteTable: React.FC<Props> = (props: Props) => {
                         <Dropdown.Item value="a">{emojiMapping.a}</Dropdown.Item>
                         <Dropdown.Item value="b">{emojiMapping.b}</Dropdown.Item>
                         <Dropdown.Item value="c">{emojiMapping.c}</Dropdown.Item>
+                        <Dropdown.Item value="d">{emojiMapping.d}</Dropdown.Item>
                       </Dropdown>
                     </PlayerCell>
                   ))}
@@ -172,7 +173,7 @@ const PlayerCell = styled.td`
       case 'ejected':
       case 'killed':
         return css`
-          background-color: hsl(0, 0%, 50%);
+          background-color: hsla(0, 0%, 50%, 0.8);
         `;
       case 'a':
         return css`
@@ -185,6 +186,10 @@ const PlayerCell = styled.td`
       case 'c':
         return css`
           background-color: hsla(348, 100%, 61%, 0.15);
+        `;
+      case 'd':
+        return css`
+          background-color: hsla(204, 86%, 53%, 0.25);
         `;
       default:
         return css``;

@@ -24,6 +24,7 @@ export const playerStates = [
   'a',
   'b',
   'c',
+  'd',
 ] as const;
 export type PlayerState = typeof playerStates[number];
 
@@ -44,4 +45,5 @@ export const emojiMapping = {
   a: 'A',
   b: 'B',
   c: 'C',
+  d: 'D',
 };
