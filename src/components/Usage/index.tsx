@@ -43,7 +43,7 @@ const UsagePanel: React.FC = () => (
             <td>追放した</td>
           </tr>
           <tr>
-            <td>A,B,C,D</td>
+            <td>A - D</td>
             <td>ライン精査用（誰と誰がセット）</td>
           </tr>
         </tbody>
