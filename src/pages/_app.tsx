@@ -49,7 +49,10 @@ const App = ({ Component, pageProps }: AppProps) => {
       />
       <Head>
         <title>Among Us Note</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <script
           data-ad-client="ca-pub-1424417569342773"
