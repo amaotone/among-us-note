@@ -5,7 +5,7 @@ import { baseUrl } from 'models/constant';
 const ShareOnTwitter: React.FC = () => {
   const url = baseUrl;
   const message =
-    '手軽に使えるAmong Usのメモです。怪しい人を見つけるのにも、自分の潔白をアピールするのにも使えます。 %23AmongUsNote';
+    '手軽に使えるAmong Usのメモです。怪しい人を見つけるのにも、自分の潔白をアピールするのにも使えます。 %23AmongUs %23AmongUsNote';
 
   return (
     <>
