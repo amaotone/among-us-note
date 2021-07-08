@@ -11,6 +11,12 @@ export const availableColors = [
   'brown',
   'cyan',
   'lime',
+  'maroon',
+  'rose',
+  'banana',
+  'gray',
+  'tan',
+  'coral',
 ];
 
 export interface IsUsed {
@@ -26,4 +32,10 @@ export interface IsUsed {
   brown: boolean;
   cyan: boolean;
   lime: boolean;
+  maroon: boolean;
+  rose: boolean;
+  banana: boolean;
+  gray: boolean;
+  tan: boolean;
+  coral: boolean;
 }

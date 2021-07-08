@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Section, Container, Columns } from 'react-bulma-components';
+import AdsenseCard from 'components/Adsense';
 import NoteTable from 'components/NoteTable';
 import PlayerTray from 'components/PlayerTray';
-import { availableColors, Player } from 'models/state';
 import UsagePanel from 'components/Usage';
-import AdsenseCard from 'components/Adsense';
+import { availableColors, Player } from 'models/state';
+import React, { useEffect, useState } from 'react';
+import { Columns, Container, Section } from 'react-bulma-components';
 
 const IndexPage: React.FC = () => {
-  const initialPlayers: Player[] = availableColors.map((c) => ({
+  const initialPlayers: Player[] = availableColors.map((c, i) => ({
     name: '',
     color: c,
-    isUsed: true,
+    isUsed: i < 12,
     hasButton: true,
     states: new Array(5).fill('neutral'),
   }));

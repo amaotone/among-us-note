@@ -1,6 +1,6 @@
+import { baseUrl } from 'models/constant';
 import React from 'react';
 import { Button } from 'react-bulma-components';
-import { baseUrl } from 'models/constant';
 
 const ShareOnTwitter: React.FC = () => {
   const url = baseUrl;

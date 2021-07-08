@@ -11,6 +11,12 @@ export const availableColors = [
   'brown',
   'cyan',
   'lime',
+  'maroon',
+  'rose',
+  'banana',
+  'gray',
+  'tan',
+  'coral',
 ] as const;
 
 export type Color = typeof availableColors[number];
