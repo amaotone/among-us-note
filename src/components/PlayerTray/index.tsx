@@ -1,8 +1,8 @@
-import React, { Dispatch, SetStateAction } from 'react';
-import { Player } from 'models/state';
 import CrewIcon from 'components/CrewIcon';
-import { Button } from 'react-bulma-components';
+import { Player } from 'models/state';
 import { nanoid } from 'nanoid';
+import React, { Dispatch, SetStateAction } from 'react';
+import { Button } from 'react-bulma-components';
 import styled from 'styled-components';
 
 interface Props {
@@ -47,7 +47,7 @@ const PlayerTray: React.FC<Props> = (props: Props) => {
         </div>
         <p className="control">
           <Button color="light" onClick={() => resetStates()}>
-            リセット
+            クリア
           </Button>
         </p>
       </div>
